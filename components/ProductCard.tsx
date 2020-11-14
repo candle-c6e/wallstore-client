@@ -11,7 +11,7 @@ interface Props {
 const ProductCard: FunctionComponent<Props> = ({ product }) => {
   return (
     <div className={styles.productCardWrapper}>
-      <Link href={`/product/${product.slug}`}>
+      <Link href={`/wallstore/product/${product.slug}`}>
         <a>
           <img
             src={`https://jjams.co/api/wallstore/uploads/product/${product.attributes.images[0].small}`}

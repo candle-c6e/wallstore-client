@@ -71,7 +71,7 @@ const CategoryMange: FunctionComponent<Props> = ({ categories }) => {
         actions: [
           {
             render: (
-              <Link href={`/category/edit?categoryId=${item._id}`}>
+              <Link href={`/wallstore/category/edit?categoryId=${item._id}`}>
                 <a>
                   <span style={{ marginRight: "10px" }}>
                     <FiEdit color="orange" />
@@ -102,7 +102,7 @@ const CategoryMange: FunctionComponent<Props> = ({ categories }) => {
       <div className="content-manage__wrapper wrapper">
         <div className="content-manage__header">
           <h3>Category</h3>
-          <Link href="/category/add">
+          <Link href="/wallstore/category/add">
             <a>
               <button>Add</button>
             </a>

@@ -125,7 +125,7 @@ const Product: FunctionComponent<Props> = ({ product }) => {
     <Layout>
       <Badges isActive={isAddCart}>
         <span>Check your</span>
-        <Link href="/cart">
+        <Link href="/wallstore/cart">
           <a className={styles.cartLink}>cart.</a>
         </Link>
       </Badges>

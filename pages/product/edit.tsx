@@ -181,7 +181,7 @@ const EditProduct = () => {
       setErrorMessage(msg);
       reset();
     } else {
-      router.push("/product");
+      router.push("/wallstore/product");
     }
   };
 

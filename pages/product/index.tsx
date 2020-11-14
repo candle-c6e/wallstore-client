@@ -119,7 +119,7 @@ const ProductMange: FunctionComponent<Props> = ({ products }) => {
         actions: [
           {
             render: (
-              <Link href={`/product/edit?productId=${item._id}`}>
+              <Link href={`/wallstore/product/edit?productId=${item._id}`}>
                 <a>
                   <span style={{ marginRight: "10px" }}>
                     <FiEdit color="orange" />
@@ -150,7 +150,7 @@ const ProductMange: FunctionComponent<Props> = ({ products }) => {
       <div className="content-manage__wrapper wrapper">
         <div className="content-manage__header">
           <h3>Products</h3>
-          <Link href="/product/add">
+          <Link href="/wallstore/product/add">
             <a>
               <button>Add</button>
             </a>

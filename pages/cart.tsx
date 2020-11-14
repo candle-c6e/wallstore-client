@@ -105,7 +105,7 @@ const Cart = () => {
       const { error }: ResponseServer = await response.json();
 
       if (!error) {
-        router.push("/");
+        router.push("/wallstore");
       }
     }
   };
@@ -134,7 +134,7 @@ const Cart = () => {
                   ? cart.map((product, index) => (
                       <tr key={index}>
                         <td>
-                          <Link href={`/product/${product.slug}`}>
+                          <Link href={`/wallstore/product/${product.slug}`}>
                             <a>
                               <img
                                 src={`https://jjams.co/api/wallstore/uploads/product/${product.productImage}`}

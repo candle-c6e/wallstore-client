@@ -46,7 +46,7 @@ const Order: FunctionComponent<Props> = ({ orders }) => {
         actions: [
           {
             render: (
-              <Link href={`/order/${item.orderId}`}>
+              <Link href={`/wallstore/order/${item.orderId}`}>
                 <a>
                   <AiFillEye color="orange" size={20} />
                 </a>

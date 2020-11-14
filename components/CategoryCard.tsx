@@ -11,8 +11,8 @@ const CategoryCard: FunctionComponent<Props> = ({ category }) => {
   return (
     <div className={styles.categoryContainer}>
       <Link
-        href={`/category/${category._id}`}
-        as={`/category/${category.categoryName}/1`}
+        href={`/wallstore/category/${category._id}`}
+        as={`/wallstore/category/${category.categoryName}/1`}
       >
         <a>
           <div className={styles.categoryWrapper}>

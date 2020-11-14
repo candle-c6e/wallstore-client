@@ -22,7 +22,7 @@ const Register = () => {
 
   useEffect(() => {
     if (user) {
-      router.push("/");
+      router.push("/wallstore");
     }
   }, []);
 
@@ -45,7 +45,7 @@ const Register = () => {
 
     if (!result.error) {
       setUser(result.result);
-      router.push("/");
+      router.push("/wallstore");
     }
   };
 

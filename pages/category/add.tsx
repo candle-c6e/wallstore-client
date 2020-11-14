@@ -36,7 +36,7 @@ const AddCategory = () => {
       setErrorMessage(msg);
       reset();
     } else {
-      router.push("/category");
+      router.push("/wallstore/category");
     }
   };
 

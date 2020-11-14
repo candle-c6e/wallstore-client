@@ -82,7 +82,7 @@ const Navbar = () => {
           >
             <GiHamburgerMenu size={20} />
           </span>
-          <Link href="/">
+          <Link href="/wallstore">
             <a>
               <span>logo</span>
             </a>
@@ -117,7 +117,7 @@ const Navbar = () => {
           {categories &&
             categories.map((category) => (
               <div className={styles.menuCategoryItem}>
-                <Link href={`/category/${category.categoryName}/1`}>
+                <Link href={`/wallstore/category/${category.categoryName}/1`}>
                   <a>
                     <h3>{category.categoryName}</h3>
                   </a>
@@ -151,7 +151,7 @@ const Navbar = () => {
             <>
               {user.roles === "admin" && (
                 <>
-                  <Link href="/category">
+                  <Link href="/wallstore/category">
                     <a>
                       <li>
                         <FiBox />
@@ -159,7 +159,7 @@ const Navbar = () => {
                       </li>
                     </a>
                   </Link>
-                  <Link href="/product">
+                  <Link href="/wallstore/product">
                     <a>
                       <li>
                         <BiBox />
@@ -169,7 +169,7 @@ const Navbar = () => {
                   </Link>
                 </>
               )}
-              <Link href="/order">
+              <Link href="/wallstore/order">
                 <a>
                   <li>
                     <BsFillInboxFill />
@@ -177,7 +177,7 @@ const Navbar = () => {
                   </li>
                 </a>
               </Link>
-              <Link href="/cart">
+              <Link href="/wallstore/cart">
                 <a>
                   <li>
                     <AiOutlineShoppingCart />
@@ -191,7 +191,7 @@ const Navbar = () => {
               </li>
             </>
           ) : (
-            <Link href="/login">
+            <Link href="/wallstore/login">
               <a>
                 <li>
                   <FiLogIn />
