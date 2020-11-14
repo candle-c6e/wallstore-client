@@ -138,7 +138,7 @@ const Product: FunctionComponent<Props> = ({ product }) => {
             <div
               className={styles.productImages}
               style={{
-                backgroundImage: `url(${`${process.env.NEXT_PUBLIC_BASEURL_API}/product/${productItem.attributes.images[colorSelecter].large}`})`,
+                backgroundImage: `url(${`${process.env.NEXT_PUBLIC_BASEURL_API}/uploads/product/${productItem.attributes.images[colorSelecter].large}`})`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",

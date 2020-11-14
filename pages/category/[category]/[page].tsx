@@ -58,7 +58,7 @@ const Category: FunctionComponent<Props> = ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(
-    "https://jjams.co/api/wallstore/categories-list"
+    `${process.env.NEXT_PUBLIC_BASEURL_API}/categories-list`
   );
   const { result }: ResponseServer = await response.json();
 
