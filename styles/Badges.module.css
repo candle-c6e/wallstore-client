@@ -1,0 +1,18 @@
+.Badges {
+  width: 300px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.Badges a {
+  margin-left: 0.5rem;
+  text-decoration: underline;
+}

@@ -1,0 +1,168 @@
+.productWrapper {
+  padding-top: 2rem;
+  font-size: 1.6rem;
+}
+
+.productInfo {
+  display: flex;
+}
+
+.productImages {
+  flex: 0 50%;
+  min-height: 500px;
+  min-height: 500px;
+}
+
+.productDetail {
+  flex: 1;
+  margin-left: 5rem;
+}
+
+.productDescription {
+  padding-top: 3rem;
+  line-height: 1.6;
+}
+
+.productRating {
+  font-size: 1.3rem;
+  padding: 1rem 0;
+}
+
+.productRating svg {
+  margin-right: 0.3rem;
+}
+
+.productRating span {
+  margin-left: 1rem;
+}
+
+.productPriceWrapper {
+  padding-top: 1rem;
+}
+
+.productPriceWrapper span:nth-child(1) {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.productPriceWrapper span:nth-child(2) {
+  margin-left: 1rem;
+  text-decoration: line-through;
+  color: var(--gray);
+}
+
+.productQuantityWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.productQuantityWrapper button {
+  margin-left: 2rem;
+  background: var(--light-blue);
+  border: 1px solid var(--light-blue);
+  color: var(--white);
+  border-radius: 2rem;
+  transition: all 0.2s;
+}
+
+.productQuantityWrapper button:hover {
+  background: var(--blue);
+  border: 1px solid var(--blue);
+  color: var(--white);
+}
+
+.productContentSection {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.productContentSection h4 {
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: column;
+  flex: 0 10%;
+}
+
+.quantity span {
+  font-size: 1.3rem;
+  color: var(--gray);
+}
+
+.quantity select {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.productDelivery {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  border: 1px solid var(--border);
+  padding: 1.6rem;
+  border-radius: 1rem;
+}
+
+.productDelivery span {
+  margin-left: 2rem;
+}
+
+.productColors {
+  display: flex;
+}
+
+.productColors div {
+  margin-right: 1rem;
+}
+
+.colorWrapper {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid var(--green);
+  position: relative;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.color {
+  display: flex;
+  position: absolute;
+  right: 0 !important;
+  bottom: 0;
+  background: var(--green);
+  color: #fff;
+  border-radius: 50%;
+}
+
+.productSizeWrapper {
+  margin-top: 1rem;
+}
+
+.productSizes {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.sizeWrapper,
+.sizeWrapper input {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .productInfo {
+    flex-direction: column;
+  }
+
+  .productDetail {
+    margin-left: 0;
+  }
+}

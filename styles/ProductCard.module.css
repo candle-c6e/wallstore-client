@@ -1,0 +1,35 @@
+.productCardWrapper {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.productCardWrapper img {
+  max-height: 300px;
+}
+
+.productName,
+.productCardPrice {
+  margin: 1rem 0;
+}
+
+.productCardPrice span:nth-child(1) {
+  font-size: 1.6rem;
+}
+
+.productCardPrice span:nth-child(2) {
+  margin-left: 1rem;
+  text-decoration: line-through;
+}
+
+.ratingWrapper {
+  font-size: 1.2rem;
+}
+
+.button {
+  margin-top: 1rem;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  background: none;
+  color: var(--blud);
+  border: 1px solid var(--blue);
+}

@@ -1,0 +1,22 @@
+.colorGroup {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.colorGroup input[type="color"] {
+  margin-bottom: 1rem;
+}
+
+.deleteGroup {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}

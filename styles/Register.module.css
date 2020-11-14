@@ -1,0 +1,27 @@
+.formLogin {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.formLogin h2 {
+  text-align: center;
+  font-weight: 300;
+  font-size: 3rem;
+}
+
+.formLogin form {
+  padding-top: 3rem;
+}
+
+.formLogin button {
+  background-color: var(--light-blue);
+}
+
+.register {
+  font-size: 1.6rem;
+}
+
+.register span {
+  color: var(--light-blue);
+  text-decoration: underline;
+}

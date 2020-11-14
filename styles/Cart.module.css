@@ -1,0 +1,56 @@
+.cartWrapper {
+  font-size: 1.6rem;
+}
+
+.table {
+  margin-top: 4rem;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  width: 100%;
+  text-align: center;
+}
+
+.table img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.table td {
+  padding: 1rem;
+  border: 1px solid var(--border);
+}
+
+.cartAttributes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartAttributes span {
+  margin-right: 2rem;
+}
+
+.cartDelete {
+  color: red;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.quantityWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantityWrapper span {
+  margin: 0 1rem;
+}
+
+.quantityWrapper svg {
+  cursor: pointer;
+}
+
+.checkOut {
+  padding: 5rem 0;
+  text-align: right;
+}

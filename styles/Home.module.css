@@ -1,0 +1,19 @@
+.categoriesWrapper {
+  padding-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 0 10px;
+}
+
+.featureWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 0 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .featureWrapper,
+  .categoriesWrapper {
+    grid-gap: 3rem 1rem;
+  }
+}

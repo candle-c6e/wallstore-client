@@ -1,0 +1,149 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8rem;
+  background-color: var(--blue);
+  color: var(--white);
+  height: 6rem;
+  font-size: 1.6rem;
+}
+
+.navbarSecond {
+  width: 100%;
+  padding: 2rem 0;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-blue);
+  color: #fff;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logoWrapper span {
+  margin-left: 1rem;
+}
+
+.search {
+}
+
+.profileWrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profileWrapper svg {
+  font-size: 2.4rem;
+}
+
+.profileWrapper span {
+  margin-left: 1rem;
+}
+
+.accountWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #fff;
+  min-width: 32rem;
+  height: 100%;
+  padding: 2rem;
+  font-size: 1.6rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  font-weight: 300;
+}
+
+.accountDetailWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accountDetail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accountDetail span {
+  margin-left: 1rem;
+}
+
+.accountAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--orange);
+  border-radius: 50%;
+}
+
+.accountDetail svg {
+  color: var(--white);
+  font-size: 2.6rem;
+}
+
+.accountWrapper ul {
+  padding: 4rem 0 0 0.5rem;
+}
+
+.accountWrapper li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.accountWrapper span {
+  margin-left: 1.5rem;
+}
+
+.menuCategoryWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--light-blue);
+  color: #fff;
+  min-width: 32rem;
+  height: 100%;
+  padding: 2rem;
+  font-size: 1.6rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  font-weight: 300;
+}
+
+.menuCategoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuCategoryItem {
+  margin: 2rem 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    padding: 0 2rem;
+  }
+
+  .menuCategoryWrapper,
+  .accountWrapper {
+    min-width: 100%;
+    z-index: 5;
+  }
+
+  .accountWrapper {
+    font-size: 1.6rem;
+  }
+
+  .accountWrapper li {
+    margin-bottom: 3rem;
+  }
+}
