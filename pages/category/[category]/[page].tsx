@@ -24,7 +24,11 @@ const Category: FunctionComponent<Props> = ({
   const router = useRouter();
 
   const handlePageClick = (data) => {
-    router.push(`/category/${category}/${data.selected + 1}`);
+    router.push(
+      `${process.env.NEXT_PUBLIC_BASEURL}/category/${category}/${
+        data.selected + 1
+      }`
+    );
   };
 
   return (
@@ -74,7 +78,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const response = await fetch(
-    `https://jjams.co/api/wallstore/product-category?categoryName=${
+    `${process.env.NEXT_PUBLIC_BASEURL_API}/product-category?categoryName=${
       params.category
     }&page=${params.page || 1}`
   );

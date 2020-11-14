@@ -19,28 +19,31 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      router.push("/wallstore");
+      router.push(process.env.NEXT_PUBLIC_BASEURL);
     }
   }, []);
 
   const onSubmit = async (data: Input) => {
-    const response = await fetch(`https://jjams.co/api/wallstore/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        username: data.username,
-        password: data.password,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          username: data.username,
+          password: data.password,
+        }),
+      }
+    );
 
     const result: ResponseServer = await response.json();
 
     if (!result.error) {
       setUser(result.result);
-      router.push("/wallstore");
+      router.push(process.env.NEXT_PUBLIC_BASEURL);
     }
   };
 
@@ -73,7 +76,7 @@ const Login = () => {
             <div className="form-group">
               <p className={styles.register}>
                 dot't have account?{" "}
-                <Link href="/register">
+                <Link href={`${process.env.NEXT_PUBLIC_BASEURL}/register`}>
                   <a>
                     <span>register</span>
                   </a>

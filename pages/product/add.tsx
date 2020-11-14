@@ -35,12 +35,15 @@ const AddProduct = () => {
   }, []);
 
   const fetchCategory = async () => {
-    const response = await fetch(`https://jjams.co/api/wallstore/categories`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/categories`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     const { error, result }: ResponseServer = await response.json();
 
     if (!error) {
@@ -101,11 +104,14 @@ const AddProduct = () => {
       }
     }
 
-    const response = await fetch("https://jjams.co/api/wallstore/product", {
-      method: "POST",
-      credentials: "include",
-      body: formData,
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/product`,
+      {
+        method: "POST",
+        credentials: "include",
+        body: formData,
+      }
+    );
     const { error, msg }: ResponseServer = await response.json();
     if (error) {
       setError(error);
@@ -204,7 +210,8 @@ const AddProduct = () => {
                 ref={register({
                   required: true,
                   pattern: /^[0-9]{1,4}.[0-9]{2}$/,
-                  validate: (value: any) => value < watch("price"),
+                  validate: (value: any) =>
+                    parseFloat(value) <= parseFloat(watch("price")),
                 })}
               />
               {errors.salePrice && errors.salePrice.type === "required" && (
@@ -264,7 +271,7 @@ const AddProduct = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const responseMe = await fetch("https://jjams.co/api/wallstore/me", {
+  const responseMe = await fetch(`${process.env.NEXT_PUBLIC_BASEURL_API}/me`, {
     credentials: "include",
     headers: {
       Cookie: req.headers.cookie,

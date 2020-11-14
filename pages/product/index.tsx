@@ -87,14 +87,17 @@ const ProductMange: FunctionComponent<Props> = ({ products }) => {
 
   const handleDelete = async (productId: string) => {
     if (window.confirm("Are your want to delete?")) {
-      const response = await fetch("https://jjams.co/api/wallstore/product", {
-        method: "DELETE",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ productId }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASEURL_API}/product`,
+        {
+          method: "DELETE",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ productId }),
+        }
+      );
       const { error, msg }: ResponseServer = await response.json();
 
       if (error) {
@@ -109,7 +112,7 @@ const ProductMange: FunctionComponent<Props> = ({ products }) => {
   const mapData = () => {
     const data: DataTable[] = products.map((item) => {
       return {
-        image: `https://jjams.co/api/wallstore/uploads/product/${item.attributes.images[0].small}`,
+        image: `${process.env.NEXT_PUBLIC_BASEURL_API}/uploads/product/${item.attributes.images[0].small}`,
         productName: item.productName,
         salePrice: `${item.salePrice} <br /> ${item.price}`,
         created: new Date(item.createdAt).toLocaleString(),
@@ -119,7 +122,9 @@ const ProductMange: FunctionComponent<Props> = ({ products }) => {
         actions: [
           {
             render: (
-              <Link href={`/wallstore/product/edit?productId=${item._id}`}>
+              <Link
+                href={`${process.env.NEXT_PUBLIC_BASEURL}/product/edit?productId=${item._id}`}
+              >
                 <a>
                   <span style={{ marginRight: "10px" }}>
                     <FiEdit color="orange" />
@@ -150,7 +155,7 @@ const ProductMange: FunctionComponent<Props> = ({ products }) => {
       <div className="content-manage__wrapper wrapper">
         <div className="content-manage__header">
           <h3>Products</h3>
-          <Link href="/wallstore/product/add">
+          <Link href={`${process.env.NEXT_PUBLIC_BASEURL}/product/add`}>
             <a>
               <button>Add</button>
             </a>
@@ -165,7 +170,7 @@ const ProductMange: FunctionComponent<Props> = ({ products }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const responseMe = await fetch("https://jjams.co/api/wallstore/me", {
+  const responseMe = await fetch(`${process.env.NEXT_PUBLIC_BASEURL_API}/me`, {
     credentials: "include",
     headers: {
       Cookie: req.headers.cookie,
@@ -182,7 +187,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     };
   }
 
-  const response = await fetch("https://jjams.co/api/wallstore/products");
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASEURL_API}/products`
+  );
   const { result: products }: ResponseServer = await response.json();
 
   return {

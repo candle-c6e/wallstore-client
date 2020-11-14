@@ -32,12 +32,12 @@ const Home: FunctionComponent<Props> = ({ products, categories }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const responseProducts = await fetch(
-    "https://jjams.co/api/wallstore/feature-products"
+    `${process.env.NEXT_PUBLIC_BASEURL_API}/feature-products`
   );
   const { result: products }: ResponseServer = await responseProducts.json();
 
   const responseCategories = await fetch(
-    "https://jjams.co/api/wallstore/categories"
+    `${process.env.NEXT_PUBLIC_BASEURL_API}/categories`
   );
   const {
     result: categories,

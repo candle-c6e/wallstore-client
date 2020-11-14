@@ -26,7 +26,7 @@ const EditCategory = () => {
 
   const fetchCategory = async () => {
     const response = await fetch(
-      `https://jjams.co/api/wallstore/category?categoryId=${query}`,
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/category?categoryId=${query}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -51,11 +51,14 @@ const EditCategory = () => {
       formData.append("categoryImage", data.image[0]);
     }
 
-    const response = await fetch("https://jjams.co/api/wallstore/category", {
-      method: "PATCH",
-      credentials: "include",
-      body: formData,
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/category`,
+      {
+        method: "PATCH",
+        credentials: "include",
+        body: formData,
+      }
+    );
 
     const { error, msg }: ResponseServer = await response.json();
 
@@ -64,7 +67,7 @@ const EditCategory = () => {
       setErrorMessage(msg);
       reset();
     } else {
-      router.push("/wallstore/category");
+      router.push(`${process.env.NEXT_PUBLIC_BASEURL}/category`);
     }
   };
 
@@ -101,7 +104,7 @@ const EditCategory = () => {
                 <img
                   width={200}
                   height={200}
-                  src={`https://jjams.co/api/wallstore/uploads/category/${category.images[0].small}`}
+                  src={`${process.env.NEXT_PUBLIC_BASEURL_API}/uploads/category/${category.images[0].small}`}
                   alt={category.categoryName}
                 />
               )}
@@ -115,7 +118,7 @@ const EditCategory = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const responseMe = await fetch("https://jjams.co/api/wallstore/me", {
+  const responseMe = await fetch(`${process.env.NEXT_PUBLIC_BASEURL_API}/me`, {
     credentials: "include",
     headers: {
       Cookie: req.headers.cookie,

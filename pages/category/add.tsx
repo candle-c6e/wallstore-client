@@ -23,11 +23,14 @@ const AddCategory = () => {
     formData.append("categoryName", data.categoryName);
     formData.append("categoryImage", data.image[0]);
 
-    const response = await fetch("https://jjams.co/api/wallstore/category", {
-      method: "POST",
-      credentials: "include",
-      body: formData,
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/category`,
+      {
+        method: "POST",
+        credentials: "include",
+        body: formData,
+      }
+    );
 
     const { error, msg }: ResponseServer = await response.json();
 
@@ -36,7 +39,7 @@ const AddCategory = () => {
       setErrorMessage(msg);
       reset();
     } else {
-      router.push("/wallstore/category");
+      router.push(`${process.env.NEXT_PUBLIC_BASEURL}/category`);
     }
   };
 
@@ -80,7 +83,7 @@ const AddCategory = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const responseMe = await fetch("https://jjams.co/api/wallstore/me", {
+  const responseMe = await fetch(`${process.env.NEXT_PUBLIC_BASEURL_API}/me`, {
     credentials: "include",
     headers: {
       Cookie: req.headers.cookie,

@@ -25,14 +25,16 @@ const Navbar = () => {
   }, [user]);
 
   const fetchCategory = async () => {
-    const response = await fetch("https://jjams.co/api/wallstore/categories");
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/categories`
+    );
     const { result }: ResponseServer = await response.json();
 
     setCategories(result);
   };
 
   const fetchUser = async () => {
-    const response = await fetch("https://jjams.co/api/wallstore/me", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASEURL_API}/me`, {
       credentials: "include",
     });
     const result: ResponseServer = await response.json();
@@ -42,13 +44,16 @@ const Navbar = () => {
   };
 
   const handleLogout = async () => {
-    const response = await fetch("https://jjams.co/api/wallstore/logout", {
-      method: "POST",
-      credentials: "include",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/logout`,
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
     const result: ResponseServer = await response.json();
     if (!result.error) {
-      window.location.href = "/";
+      window.location.href = process.env.NEXT_PUBLIC_BASEURL;
     }
   };
 
@@ -82,7 +87,7 @@ const Navbar = () => {
           >
             <GiHamburgerMenu size={20} />
           </span>
-          <Link href="/wallstore">
+          <Link href={`${process.env.NEXT_PUBLIC_BASEURL}`}>
             <a>
               <span>logo</span>
             </a>
@@ -117,7 +122,9 @@ const Navbar = () => {
           {categories &&
             categories.map((category) => (
               <div className={styles.menuCategoryItem}>
-                <Link href={`/wallstore/category/${category.categoryName}/1`}>
+                <Link
+                  href={`${process.env.NEXT_PUBLIC_BASEURL}/category/${category.categoryName}/1`}
+                >
                   <a>
                     <h3>{category.categoryName}</h3>
                   </a>
@@ -151,7 +158,7 @@ const Navbar = () => {
             <>
               {user.roles === "admin" && (
                 <>
-                  <Link href="/wallstore/category">
+                  <Link href={`${process.env.NEXT_PUBLIC_BASEURL}/category`}>
                     <a>
                       <li>
                         <FiBox />
@@ -159,7 +166,7 @@ const Navbar = () => {
                       </li>
                     </a>
                   </Link>
-                  <Link href="/wallstore/product">
+                  <Link href={`${process.env.NEXT_PUBLIC_BASEURL}/product`}>
                     <a>
                       <li>
                         <BiBox />
@@ -169,7 +176,7 @@ const Navbar = () => {
                   </Link>
                 </>
               )}
-              <Link href="/wallstore/order">
+              <Link href={`${process.env.NEXT_PUBLIC_BASEURL}/order`}>
                 <a>
                   <li>
                     <BsFillInboxFill />
@@ -177,7 +184,7 @@ const Navbar = () => {
                   </li>
                 </a>
               </Link>
-              <Link href="/wallstore/cart">
+              <Link href={`${process.env.NEXT_PUBLIC_BASEURL}/cart`}>
                 <a>
                   <li>
                     <AiOutlineShoppingCart />
@@ -191,7 +198,7 @@ const Navbar = () => {
               </li>
             </>
           ) : (
-            <Link href="/wallstore/login">
+            <Link href={`${process.env.NEXT_PUBLIC_BASEURL}/login`}>
               <a>
                 <li>
                   <FiLogIn />

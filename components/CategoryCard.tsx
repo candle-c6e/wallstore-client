@@ -11,13 +11,13 @@ const CategoryCard: FunctionComponent<Props> = ({ category }) => {
   return (
     <div className={styles.categoryContainer}>
       <Link
-        href={`/wallstore/category/${category._id}`}
-        as={`/wallstore/category/${category.categoryName}/1`}
+        href={`${process.env.NEXT_PUBLIC_BASEURL}/category/${category._id}`}
+        as={`${process.env.NEXT_PUBLIC_BASEURL}/category/${category.categoryName}/1`}
       >
         <a>
           <div className={styles.categoryWrapper}>
             <img
-              src={`https://jjams.co/api/wallstore/uploads/category/${category.images[0].small}`}
+              src={`${process.env.NEXT_PUBLIC_BASEURL_API}/uploads/category/${category.images[0].small}`}
               alt={category.categoryName}
             />
             <p>{category.categoryName}</p>

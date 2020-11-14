@@ -25,14 +25,17 @@ const OrderDetail = () => {
   }, [order]);
 
   const fetchOrder = async () => {
-    const response = await fetch("https://jjams.co/api/wallstore/order-id", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({ orderId: router.query.id }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/order-id`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ orderId: router.query.id }),
+      }
+    );
     const result: ResponseServer = await response.json();
 
     if (!result.error) {
@@ -73,7 +76,7 @@ const OrderDetail = () => {
       order &&
       order.products.map((item) => {
         return {
-          image: `https://jjams.co/api/wallstore/uploads/product/${item.productImage}`,
+          image: `${process.env.NEXT_PUBLIC_BASEURL_API}/uploads/product/${item.productImage}`,
           productName: item.productName,
           attributes: (
             <div
@@ -125,7 +128,7 @@ const OrderDetail = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const responseMe = await fetch("https://jjams.co/api/wallstore/me", {
+  const responseMe = await fetch(`${process.env.NEXT_PUBLIC_BASEURL_API}/me`, {
     credentials: "include",
     headers: {
       Cookie: req.headers.cookie,

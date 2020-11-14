@@ -19,9 +19,12 @@ const Cart = () => {
   }, []);
 
   const fetchCart = async () => {
-    const response = await fetch("https://jjams.co/api/wallstore/cart", {
-      credentials: "include",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/cart`,
+      {
+        credentials: "include",
+      }
+    );
     const result: ResponseServer = await response.json();
 
     if (!result.error) {
@@ -30,14 +33,17 @@ const Cart = () => {
   };
 
   const handleDelete = async (cartProductId: string) => {
-    const response = await fetch("https://jjams.co/api/wallstore/delete-cart", {
-      method: "DELETE",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ cartProductId }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/delete-cart`,
+      {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cartProductId }),
+      }
+    );
     const result: ResponseServer = await response.json();
 
     if (!result.error) {
@@ -48,7 +54,7 @@ const Cart = () => {
   const handleQuantity = async (cartProductId: string, quantity: number) => {
     if (quantity < 1) {
       const response = await fetch(
-        "https://jjams.co/api/wallstore/delete-cart",
+        `${process.env.NEXT_PUBLIC_BASEURL_API}/delete-cart`,
         {
           method: "DELETE",
           credentials: "include",
@@ -61,7 +67,7 @@ const Cart = () => {
       await response.json();
     } else {
       const response = await fetch(
-        "https://jjams.co/api/wallstore/update-cart",
+        `${process.env.NEXT_PUBLIC_BASEURL_API}/update-cart`,
         {
           method: "PATCH",
           credentials: "include",
@@ -96,7 +102,7 @@ const Cart = () => {
   const handleCheckOut = async () => {
     if (window.confirm("Are you want to checkout?")) {
       const response = await fetch(
-        "https://jjams.co/api/wallstore/create-order",
+        `${process.env.NEXT_PUBLIC_BASEURL_API}/create-order`,
         {
           method: "POST",
           credentials: "include",
@@ -105,7 +111,7 @@ const Cart = () => {
       const { error }: ResponseServer = await response.json();
 
       if (!error) {
-        router.push("/wallstore");
+        router.push(`${process.env.NEXT_PUBLIC_BASEURL}`);
       }
     }
   };
@@ -134,10 +140,12 @@ const Cart = () => {
                   ? cart.map((product, index) => (
                       <tr key={index}>
                         <td>
-                          <Link href={`/wallstore/product/${product.slug}`}>
+                          <Link
+                            href={`${process.env.NEXT_PUBLIC_BASEURL}/product/${product.slug}`}
+                          >
                             <a>
                               <img
-                                src={`https://jjams.co/api/wallstore/uploads/product/${product.productImage}`}
+                                src={`${process.env.NEXT_PUBLIC_BASEURL_API}/uploads/product/${product.productImage}`}
                                 alt={product.productImage}
                               />
                             </a>

@@ -72,19 +72,22 @@ const Product: FunctionComponent<Props> = ({ product }) => {
   const addToCart = async () => {
     const color = productItem.attributes.images[colorSelecter].color;
 
-    const response = await fetch("https://jjams.co/api/wallstore/add-to-cart", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        productId: productItem._id,
-        color,
-        size: sizeSelecter,
-        quantity,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/add-to-cart`,
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId: productItem._id,
+          color,
+          size: sizeSelecter,
+          quantity,
+        }),
+      }
+    );
     const result: ResponseServer = await response.json();
 
     if (!result.error) {
@@ -125,7 +128,7 @@ const Product: FunctionComponent<Props> = ({ product }) => {
     <Layout>
       <Badges isActive={isAddCart}>
         <span>Check your</span>
-        <Link href="/wallstore/cart">
+        <Link href={`${process.env.NEXT_PUBLIC_BASEURL}/cart`}>
           <a className={styles.cartLink}>cart.</a>
         </Link>
       </Badges>
@@ -135,7 +138,7 @@ const Product: FunctionComponent<Props> = ({ product }) => {
             <div
               className={styles.productImages}
               style={{
-                backgroundImage: `url(${`https://jjams.co/api/wallstore/uploads/product/${productItem.attributes.images[colorSelecter].large}`})`,
+                backgroundImage: `url(${`${process.env.NEXT_PUBLIC_BASEURL_API}/product/${productItem.attributes.images[colorSelecter].large}`})`,
                 backgroundPosition: "center center",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
@@ -144,7 +147,9 @@ const Product: FunctionComponent<Props> = ({ product }) => {
             />
             <div className={styles.productDetail}>
               <div className={styles.productContentSection}>
-                <Link href={`/category/${productItem.category}/1`}>
+                <Link
+                  href={`${process.env.NEXT_PUBLIC_BASEURL}/category/${productItem.category}/1`}
+                >
                   <a>
                     <h4>{productItem.category}</h4>
                   </a>
@@ -220,7 +225,9 @@ const Product: FunctionComponent<Props> = ({ product }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch("https://jjams.co/api/wallstore/products");
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASEURL_API}/products`
+  );
   const result: ResponseServer = await response.json();
 
   const params = [];
@@ -239,7 +246,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const response = await fetch(
-    `https://jjams.co/api/wallstore/product?slug=${params.slug}`
+    `${process.env.NEXT_PUBLIC_BASEURL_API}/product?slug=${params.slug}`
   );
   const result = await response.json();
 

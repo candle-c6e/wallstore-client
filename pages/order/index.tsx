@@ -46,7 +46,9 @@ const Order: FunctionComponent<Props> = ({ orders }) => {
         actions: [
           {
             render: (
-              <Link href={`/wallstore/order/${item.orderId}`}>
+              <Link
+                href={`${process.env.NEXT_PUBLIC_BASEURL}/order/${item.orderId}`}
+              >
                 <a>
                   <AiFillEye color="orange" size={20} />
                 </a>
@@ -77,7 +79,7 @@ const Order: FunctionComponent<Props> = ({ orders }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const responseMe = await fetch("https://jjams.co/api/wallstore/me", {
+  const responseMe = await fetch(`${process.env.NEXT_PUBLIC_BASEURL_API}/me`, {
     credentials: "include",
     headers: {
       Cookie: req.headers.cookie,
@@ -94,12 +96,15 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     };
   }
 
-  const response = await fetch("https://jjams.co/api/wallstore/order-user", {
-    credentials: "include",
-    headers: {
-      Cookie: req.headers.cookie,
-    },
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASEURL_API}/order-user`,
+    {
+      credentials: "include",
+      headers: {
+        Cookie: req.headers.cookie,
+      },
+    }
+  );
   const { result }: ResponseServer = await response.json();
 
   return {
