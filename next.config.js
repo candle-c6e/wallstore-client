@@ -1,5 +1,8 @@
+const isProd = process.env.NODE_ENV === "production";
+
 module.exports = {
-  basePath: "/wallstore",
+  assetPrefix: isProd ? "https://jjam.co/wallstore/" : "",
+  // basePath: "/wallstore",
   images: {
     domains: ["localhost"],
   },
