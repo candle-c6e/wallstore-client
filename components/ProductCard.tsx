@@ -11,7 +11,10 @@ interface Props {
 const ProductCard: FunctionComponent<Props> = ({ product }) => {
   return (
     <div className={styles.productCardWrapper}>
-      <Link href={`${process.env.NEXT_PUBLIC_BASEURL}/product/${product.slug}`}>
+      <Link
+        href={`${process.env.NEXT_PUBLIC_BASEURL}/product/[slug]`}
+        as={`${process.env.NEXT_PUBLIC_BASEURL}/product/${product.slug}`}
+      >
         <a>
           <img
             src={`${process.env.NEXT_PUBLIC_BASEURL_API}/uploads/product/${product.attributes.images[0].small}`}
