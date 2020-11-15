@@ -87,7 +87,7 @@ const Navbar = () => {
           >
             <GiHamburgerMenu size={20} />
           </span>
-          <Link href="/wallstore">
+          <Link href="/">
             <a>
               <span>Wallstore</span>
             </a>
