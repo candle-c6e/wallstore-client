@@ -1,8 +1,10 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useState, useEffect } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { GrDeliver } from "react-icons/gr";
 import { BsCheck } from "react-icons/bs";
+import { NextSeo } from "next-seo";
 import Layout from "../../components/Layout";
 import { TProduct, ResponseServer, ProductImages } from "../../lib/types";
 import { fetchStar } from "../../utils/fetchStar";
@@ -126,6 +128,10 @@ const Product: FunctionComponent<Props> = ({ product }) => {
 
   return (
     <Layout>
+      <NextSeo
+        title={`${productItem.productName} | wallstore`}
+        description={productItem.description}
+      />
       <Badges isActive={isAddCart}>
         <span>Check your</span>
         <Link href={`${process.env.NEXT_PUBLIC_BASEURL}/cart`}>
@@ -145,6 +151,12 @@ const Product: FunctionComponent<Props> = ({ product }) => {
                 objectFit: "contain",
               }}
             />
+            {/* <Image
+              src={`/product/${productItem.attributes.images[colorSelecter].large}`}
+              width="500"
+              height="500"
+              alt={productItem.productName}
+            /> */}
             <div className={styles.productDetail}>
               <div className={styles.productContentSection}>
                 <Link

@@ -2,6 +2,7 @@ import { useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { NextSeo } from "next-seo";
 import Layout from "../components/Layout";
 import { UserContext } from "../context/userContext";
 import { TUserContext, ResponseServer } from "../lib/types";
@@ -54,6 +55,10 @@ const Register = () => {
 
   return (
     <Layout>
+      <NextSeo
+        title="register | wallstore"
+        description="wallstore ecommerce this site power by nextjs"
+      />
       <div className={styles.formLogin}>
         <h2>Register your account</h2>
         <div>

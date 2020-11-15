@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
 import { FunctionComponent } from "react";
+import { NextSeo } from "next-seo";
 import CategoryCard from "../components/CategoryCard";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
@@ -14,6 +15,10 @@ interface Props {
 const Home: FunctionComponent<Props> = ({ products, categories }) => {
   return (
     <Layout>
+      <NextSeo
+        title="wallstore | ecommerce"
+        description="wallstore ecommerce this site power by nextjs"
+      />
       <div className="wrapper">
         <div className={styles.featureWrapper}>
           {products.map((product) => (

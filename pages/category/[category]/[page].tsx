@@ -3,6 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import ReactPaginate from "react-paginate";
+import { NextSeo } from "next-seo";
 import Layout from "../../../components/Layout";
 import ProductCard from "../../../components/ProductCard";
 import { ResponseServer, TProduct } from "../../../lib/types";
@@ -18,7 +19,6 @@ interface Props {
 const Category: FunctionComponent<Props> = ({
   products,
   totalPages,
-  currentPage,
   category,
 }) => {
   const router = useRouter();
@@ -33,6 +33,10 @@ const Category: FunctionComponent<Props> = ({
 
   return (
     <Layout>
+      <NextSeo
+        title={`${category} | wallstore`}
+        description="wallstore ecommerce this site power by nextjs"
+      />
       <div className={styles.productCategoryWrapper}>
         {products.map((product) => (
           <ProductCard key={product._id} product={product} />

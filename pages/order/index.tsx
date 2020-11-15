@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import { AiFillEye } from "react-icons/ai";
+import { NextSeo } from "next-seo";
 import Table, { DataTable, HeaderTable } from "../../components/Table";
 import { TOrderDetail, ResponseServer, TCart } from "../../lib/types";
 import Layout from "../../components/Layout";
@@ -64,6 +65,10 @@ const Order: FunctionComponent<Props> = ({ orders }) => {
 
   return (
     <Layout>
+      <NextSeo
+        title="order | wallstore"
+        description="wallstore ecommerce this site power by nextjs"
+      />
       <div className={`${styles.orderWrapper} wrapper`}>
         <h2>Order</h2>
         {orders && orders.length ? (

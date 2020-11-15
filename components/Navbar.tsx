@@ -93,7 +93,7 @@ const Navbar = () => {
             </a>
           </Link>
         </div>
-        <div>search</div>
+        <div></div>
         <div
           className={styles.profileWrapper}
           onClick={() => setIsShowMenu(!isShowMenu)}
@@ -121,7 +121,7 @@ const Navbar = () => {
         <div>
           {categories &&
             categories.map((category) => (
-              <div className={styles.menuCategoryItem}>
+              <div className={styles.menuCategoryItem} key={category._id}>
                 <Link
                   href={`${process.env.NEXT_PUBLIC_BASEURL}/category/${category.categoryName}/1`}
                 >

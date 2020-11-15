@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Category } from "../lib/types";
 import styles from "../styles/CategoryCard.module.css";
 
@@ -16,8 +17,10 @@ const CategoryCard: FunctionComponent<Props> = ({ category }) => {
       >
         <a>
           <div className={styles.categoryWrapper}>
-            <img
-              src={`${process.env.NEXT_PUBLIC_BASEURL_API}/uploads/category/${category.images[0].small}`}
+            <Image
+              src={`/category/${category.images[0].small}`}
+              width="100"
+              height="100"
               alt={category.categoryName}
             />
             <p>{category.categoryName}</p>

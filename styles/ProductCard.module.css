@@ -3,6 +3,12 @@
   text-align: center;
 }
 
+.productCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .productCardWrapper img {
   max-height: 300px;
 }
