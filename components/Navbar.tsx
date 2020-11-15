@@ -87,9 +87,9 @@ const Navbar = () => {
           >
             <GiHamburgerMenu size={20} />
           </span>
-          <Link href={`${process.env.NEXT_PUBLIC_BASEURL}`}>
+          <Link href="/wallstore">
             <a>
-              <span>logo</span>
+              <span>Wallstore</span>
             </a>
           </Link>
         </div>
