@@ -48,7 +48,7 @@ const Register = () => {
 
     if (!result.error) {
       setUser(result.result);
-      router.push(process.env.NEXT_PUBLIC_BASEURL);
+      router.push("/");
     }
   };
 

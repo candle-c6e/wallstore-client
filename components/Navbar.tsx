@@ -53,7 +53,7 @@ const Navbar = () => {
     );
     const result: ResponseServer = await response.json();
     if (!result.error) {
-      window.location.href = process.env.NEXT_PUBLIC_BASEURL;
+      window.location.href = "/";
     }
   };
 
