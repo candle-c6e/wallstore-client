@@ -67,7 +67,7 @@ const EditCategory = () => {
       setErrorMessage(msg);
       reset();
     } else {
-      router.push(`${process.env.NEXT_PUBLIC_BASEURL}/category`);
+      router.push(`/category`);
     }
   };
 

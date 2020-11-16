@@ -118,7 +118,7 @@ const AddProduct = () => {
       setErrorMessage(msg);
       reset();
     } else {
-      router.push("/wallstore/product");
+      router.push("/product");
     }
   };
 
