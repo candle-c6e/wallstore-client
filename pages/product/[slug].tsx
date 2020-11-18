@@ -1,7 +1,6 @@
 import { FunctionComponent, useState, useEffect } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { GrDeliver } from "react-icons/gr";
 import { BsCheck } from "react-icons/bs";
 import { NextSeo } from "next-seo";
@@ -20,6 +19,8 @@ const Product: FunctionComponent<Props> = ({ product }) => {
   const [colorSelecter, setColorSelector] = useState<number>(0);
   const [sizeSelecter, setSizeSelector] = useState<string>("S");
   const [quantity, setQuantity] = useState<number>(1);
+  const [ratingOver, setRatingOver] = useState<number | null>(null);
+  const [ratingSelected, setRatingSelected] = useState<number | null>(null);
 
   if (!product.length) {
     return (
@@ -124,6 +125,25 @@ const Product: FunctionComponent<Props> = ({ product }) => {
     return sizes;
   };
 
+  const handleSelectedRating = async (rating: number) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL_API}/review-product`,
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId: productItem._id,
+          rating: rating + 1,
+        }),
+      }
+    );
+    await response.json();
+    setRatingSelected(rating);
+  };
+
   const productItem = product[0];
 
   return (
@@ -151,12 +171,6 @@ const Product: FunctionComponent<Props> = ({ product }) => {
                 objectFit: "contain",
               }}
             />
-            {/* <Image
-              src={`/product/${productItem.attributes.images[colorSelecter].large}`}
-              width="500"
-              height="500"
-              alt={productItem.productName}
-            /> */}
             <div className={styles.productDetail}>
               <div className={styles.productContentSection}>
                 <Link
@@ -167,8 +181,17 @@ const Product: FunctionComponent<Props> = ({ product }) => {
                   </a>
                 </Link>
                 <h2>{productItem.productName}</h2>
-                <div className={styles.productRating}>
-                  {fetchStar(productItem.rating)}
+                <div
+                  className={styles.productRating}
+                  onMouseLeave={() => setRatingOver(null)}
+                >
+                  {fetchStar(
+                    productItem.rating,
+                    ratingOver,
+                    setRatingOver,
+                    ratingSelected,
+                    handleSelectedRating
+                  )}
                   <span>({productItem.rating})</span>
                 </div>
                 <div className={styles.productPriceWrapper}>

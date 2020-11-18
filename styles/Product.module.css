@@ -29,6 +29,7 @@
 }
 
 .productRating svg {
+  cursor: pointer;
   margin-right: 0.3rem;
 }
 

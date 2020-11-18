@@ -31,6 +31,10 @@
   font-size: 1.2rem;
 }
 
+.ratingWrapper svg {
+  margin: 0 0.2rem;
+}
+
 .button {
   margin-top: 1rem;
   border-radius: 2rem;
