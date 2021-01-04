@@ -25,9 +25,9 @@ const ProductCard: FunctionComponent<Props> = ({ product }) => {
               alt={product.productName}
             />
             <p className={styles.productName}>{product.productName}</p>
-            <div className={styles.ratingWrapper}>
+            {/* <div className={styles.ratingWrapper}>
               {fetchStar(product.rating, null, null, null, null)}
-            </div>
+            </div> */}
             <div className={styles.productCardPrice}>
               <span>${product.salePrice}</span>
               <span>${product.price}</span>

@@ -166,9 +166,9 @@ const Product: FunctionComponent<Props> = ({ product }) => {
               style={{
                 backgroundImage: `url(${`${process.env.NEXT_PUBLIC_BASEURL_API}/uploads/product/${productItem.attributes.images[colorSelecter].large}`})`,
                 backgroundPosition: "center center",
-                backgroundSize: "cover",
+                backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
-                objectFit: "contain",
+                objectFit: "cover",
               }}
             />
             <div className={styles.productDetail}>
@@ -181,7 +181,7 @@ const Product: FunctionComponent<Props> = ({ product }) => {
                   </a>
                 </Link>
                 <h2>{productItem.productName}</h2>
-                <div
+                {/* <div
                   className={styles.productRating}
                   onMouseLeave={() => setRatingOver(null)}
                 >
@@ -193,7 +193,7 @@ const Product: FunctionComponent<Props> = ({ product }) => {
                     handleSelectedRating
                   )}
                   <span>({productItem.rating})</span>
-                </div>
+                </div> */}
                 <div className={styles.productPriceWrapper}>
                   <span>${productItem.salePrice}</span>
                   <span>${productItem.price}</span>
